@@ -3,7 +3,10 @@ import * as hotelController from '../controllers/hotel.controller'
 
 const router = Router()
 
-router.route('/').post(hotelController.createNewHotel)
+router
+    .route('/')
+    .post(hotelController.createNewHotel)
+    .get(hotelController.getAllHotels)
 
 router
     .route('/:id')
