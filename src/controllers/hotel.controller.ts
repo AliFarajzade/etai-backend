@@ -76,3 +76,22 @@ export const getHotelById = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getAllHotels = async (req: Request, res: Response) => {
+    try {
+        const hotels = await HotelModel.find()
+
+        res.status(200).json({
+            status: 'success',
+            results: hotels.length,
+            data: {
+                hotels,
+            },
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: 'fail',
+            data: error,
+        })
+    }
+}
