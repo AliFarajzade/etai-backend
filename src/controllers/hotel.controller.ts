@@ -19,7 +19,7 @@ export const createNewHotel = async (req: Request, res: Response) => {
     }
 }
 
-export const updateHotel = async (req: Request, res: Response) => {
+export const updateHotelById = async (req: Request, res: Response) => {
     try {
         const updatedHotel = await HotelModel.findByIdAndUpdate(
             req.params.id,
@@ -44,7 +44,7 @@ export const updateHotel = async (req: Request, res: Response) => {
     }
 }
 
-export const deleteHotel = async (req: Request, res: Response) => {
+export const deleteHotelById = async (req: Request, res: Response) => {
     try {
         await HotelModel.findByIdAndRemove(req.params.id)
 

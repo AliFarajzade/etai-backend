@@ -7,7 +7,7 @@ router.route('/').post(hotelController.createNewHotel)
 
 router
     .route('/:id')
-    .patch(hotelController.updateHotel)
-    .delete(hotelController.deleteHotel)
+    .patch(hotelController.updateHotelById)
+    .delete(hotelController.deleteHotelById)
 
 export default router
