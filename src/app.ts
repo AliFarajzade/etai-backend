@@ -24,14 +24,14 @@ app.use('*', (_req: Request, res: Response) => {
 
 app.use(
     (
-        err: { statusCode?: number; message?: string; status?: string },
+        err: { statusCode?: number; message?: string },
         _req: Request,
         res: Response,
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         _next: NextFunction
     ) => {
         res.status(err.statusCode ?? 500).json({
-            status: err.status ?? 'fail',
+            status: 'fail',
             message: err.message ?? 'Something very wrong.',
         })
     }
