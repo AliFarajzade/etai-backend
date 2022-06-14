@@ -5,4 +5,6 @@ const router = Router()
 
 router.route('/').post(hotelController.createNewHotel)
 
+router.route('/:id').patch(hotelController.updateHotel)
+
 export default router
