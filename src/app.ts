@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import authRouter from './router/auth.router'
 import hotelsRouter from './router/hotels.router'
 import roomsRouter from './router/rooms.router'
@@ -21,5 +21,20 @@ app.use('*', (_req: Request, res: Response) => {
         message: 'No such route is available.',
     })
 })
+
+app.use(
+    (
+        err: { statusCode?: number; message?: string; status?: string },
+        _req: Request,
+        res: Response,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        _next: NextFunction
+    ) => {
+        res.status(err.statusCode ?? 500).json({
+            status: err.status ?? 'fail',
+            message: err.message ?? 'Something very wrong.',
+        })
+    }
+)
 
 export default app
