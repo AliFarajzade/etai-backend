@@ -58,3 +58,21 @@ export const deleteHotelById = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getHotelById = async (req: Request, res: Response) => {
+    try {
+        const hotel = await HotelModel.findById(req.params.id)
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                hotel,
+            },
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: 'fail',
+            data: error,
+        })
+    }
+}
