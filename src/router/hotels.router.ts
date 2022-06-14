@@ -9,5 +9,6 @@ router
     .route('/:id')
     .patch(hotelController.updateHotelById)
     .delete(hotelController.deleteHotelById)
+    .get(hotelController.getHotelById)
 
 export default router
