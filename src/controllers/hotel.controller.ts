@@ -1,7 +1,11 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import HotelModel from '../models/hotel.model'
 
-export const createNewHotel = async (req: Request, res: Response) => {
+export const createNewHotel = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
         const newHotel = await HotelModel.create(req.body)
 
@@ -12,14 +16,15 @@ export const createNewHotel = async (req: Request, res: Response) => {
             },
         })
     } catch (error) {
-        res.status(500).json({
-            status: 'fail',
-            data: error,
-        })
+        next(error)
     }
 }
 
-export const updateHotelById = async (req: Request, res: Response) => {
+export const updateHotelById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
         const updatedHotel = await HotelModel.findByIdAndUpdate(
             req.params.id,
@@ -37,14 +42,15 @@ export const updateHotelById = async (req: Request, res: Response) => {
             },
         })
     } catch (error) {
-        res.status(500).json({
-            status: 'fail',
-            data: error,
-        })
+        next(error)
     }
 }
 
-export const deleteHotelById = async (req: Request, res: Response) => {
+export const deleteHotelById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
         await HotelModel.findByIdAndRemove(req.params.id)
 
@@ -52,14 +58,15 @@ export const deleteHotelById = async (req: Request, res: Response) => {
             status: 'success',
         })
     } catch (error) {
-        res.status(500).json({
-            status: 'fail',
-            data: error,
-        })
+        next(error)
     }
 }
 
-export const getHotelById = async (req: Request, res: Response) => {
+export const getHotelById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
         const hotel = await HotelModel.findById(req.params.id)
 
@@ -70,14 +77,15 @@ export const getHotelById = async (req: Request, res: Response) => {
             },
         })
     } catch (error) {
-        res.status(500).json({
-            status: 'fail',
-            data: error,
-        })
+        next(error)
     }
 }
 
-export const getAllHotels = async (req: Request, res: Response) => {
+export const getAllHotels = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     try {
         const hotels = await HotelModel.find()
 
@@ -89,9 +97,6 @@ export const getAllHotels = async (req: Request, res: Response) => {
             },
         })
     } catch (error) {
-        res.status(500).json({
-            status: 'fail',
-            data: error,
-        })
+        next(error)
     }
 }
