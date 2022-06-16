@@ -3,7 +3,7 @@ import express, { NextFunction, Request, Response } from 'express'
 import authRouter from './router/auth.router'
 import hotelsRouter from './router/hotels.router'
 import roomsRouter from './router/rooms.router'
-import usersRouter from './router/users.router '
+import usersRouter from './router/users.router'
 
 const app = express()
 
