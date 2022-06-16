@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser'
 import express, { NextFunction, Request, Response } from 'express'
 import authRouter from './router/auth.router'
 import hotelsRouter from './router/hotels.router'
@@ -8,6 +9,7 @@ const app = express()
 
 // Body parser middleware
 app.use(express.json())
+app.use(cookieParser())
 
 // General router middlewares
 app.use('/api/v1/auth', authRouter)
