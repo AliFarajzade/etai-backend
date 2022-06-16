@@ -30,7 +30,7 @@ export const updateRoomById = async (
     next: NextFunction
 ) => {
     try {
-        const updatedRoom = await HotelModel.findByIdAndUpdate(
+        const updatedRoom = await RoomModel.findByIdAndUpdate(
             req.params.id,
             req.body,
             {
