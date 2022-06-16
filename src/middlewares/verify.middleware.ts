@@ -34,3 +34,12 @@ export const verifyUser = (
         next()
     else return next({ statusCode: 401, message: 'Unauthorized' })
 }
+
+export const verifyAdmin = (
+    req: Request,
+    _res: Response,
+    next: NextFunction
+) => {
+    if (req.userCredentials?.isAdmin) next()
+    else return next({ statusCode: 401, message: 'Unauthorized' })
+}
